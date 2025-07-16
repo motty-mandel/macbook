@@ -24,19 +24,20 @@ date.innerHTML = dayNameShort + " " + monthNameShort + " " + dateObj.getDate();
 // ------------------------------------------------------
 
 // ------------- Adding app grabbing -------------
-const finderApp = document.querySelector('.finder-app');
+const appWindow = document.querySelector('.app-window');
+const closeResize = document.querySelector('.close-resize');
 const controlPanel = document.querySelector('.control-panel');
 
 let isDragging = false;
 let offsetX, offsetY;
 
 // Start dragging
-finderApp.addEventListener('mousedown', (e) => {
+closeResize.addEventListener('mousedown', (e) => {
     e.preventDefault();
     isDragging = true;
-    offsetX = e.clientX - finderApp.offsetLeft;
-    offsetY = e.clientY - finderApp.offsetTop;
-    finderApp.style.cursor = 'grabbing';
+    offsetX = e.clientX - appWindow.offsetLeft;
+    offsetY = e.clientY - appWindow.offsetTop;
+    appWindow.style.cursor = 'grabbing';
 });
 
 // Dragging
@@ -47,18 +48,39 @@ document.addEventListener('mousemove', (e) => {
         // Prevent dragging higher than the control panel
         const controlPanelHeight = controlPanel.offsetHeight;
         if (newTop >= controlPanelHeight) {
-            finderApp.style.top = `${newTop}px`;
+            appWindow.style.top = `${newTop}px`;
         }
 
-        finderApp.style.left = `${e.clientX - offsetX}px`;
+        appWindow.style.left = `${e.clientX - offsetX}px`;
     }
 });
 
 // Stop dragging
 document.addEventListener('mouseup', () => {
     isDragging = false;
-    finderApp.style.cursor = 'default';
+    appWindow.style.cursor = 'default';
 });
 // -------------------------------------------------------
 
 // ------------- Working on app opening ---------------------
+const finderIcon = document.querySelector('.finder-icon');
+const tvIcon = document.querySelector('.tv-icon');
+const appHeader = document.querySelector('.app-header')
+
+finderIcon.addEventListener('click', () => {
+    if (appWindow.style.display == "" || appWindow.style.display == "none") {
+        appWindow.style.display = 'flex';
+        appHeader.textContent = "Finder"
+    } else {
+        appWindow.style.display = 'none'
+    }
+})
+
+tvIcon.addEventListener('click', () => {
+    if (appWindow.style.display == "" || appWindow.style.display == "none") {
+        appWindow.style.display = 'flex';
+        appHeader.textContent = "Tv"
+    } else {
+        appWindow.style.display = 'none'
+    }
+})
