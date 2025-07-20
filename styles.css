@@ -113,7 +113,7 @@ body {
 }
 
 .app-window {
-    display: none;
+    display: flex;
     flex-direction: row;
     position: absolute;
     top: 20%;
@@ -134,6 +134,10 @@ body {
     height: 28px;
     width: 100%;
     border-radius: 10px;
+}
+
+.app-window .app-header {
+    color: aliceblue;
 }
 
 .app-window .close-resize .red {
