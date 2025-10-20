@@ -5,7 +5,7 @@ if (window.performance && window.performance.getEntriesByType) {
         if (navType === 'reload') {
             localStorage.setItem('Finder', 0);
             localStorage.setItem('Tv', 0);
-            localStorage.setItem('App', 0);
+            localStorage.setItem('App Store', 0);
         } else {
             console.log('This page was not reloaded (e.g., first load, back/forward navigation).');
         }

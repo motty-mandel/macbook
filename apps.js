@@ -5,18 +5,18 @@ const appStoreIcon = document.querySelector('.app-store-icon');
 const controlPanel = document.querySelector('.control-panel');
 
 finderIcon.addEventListener('click', () => {
-    createFinderApp(finderIcon.id);
+    createApp(finderIcon.id);
 })
 
 tvIcon.addEventListener('click', () => {
-    createFinderApp(tvIcon.id);
+    createApp(tvIcon.id);
 })
 
 appStoreIcon.addEventListener('click', () => {
-    createFinderApp(appStoreIcon.id);
+    createApp(appStoreIcon.id);
 })
 
-function createFinderApp(appName, appWindow) {
+function createApp(appName, appWindow) {
     let appOpened = localStorage.getItem(appName);
 
     if (appOpened == 0 || appOpened == null) {
@@ -55,19 +55,21 @@ function createFinderApp(appName, appWindow) {
         appWindow.appendChild(appHeader);
 
         document.body.appendChild(appWindow);
+        document.getElementById(`${appName}`).classList.add('active');
         localStorage.setItem(appName, 1);
     } else {
         const existingWindow = document.querySelector(`.app-window[data-app="${appName}"]`);
         if (existingWindow) {
             document.body.removeChild(existingWindow);
+            document.getElementById(`${appName}`).classList.remove('active');
         }
         localStorage.setItem(appName, 0);
     }
-    finderAppDragging(appWindow);
+    appDragging(appWindow);
     openClose(finderEx, appWindow, appName);
 }
 
-function finderAppDragging(appWindow) {
+function appDragging(appWindow) {
 
     let isDraggingFinder = false;
     let offsetXFinder, offsetYFinder;
