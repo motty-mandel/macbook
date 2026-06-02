@@ -1,5 +1,6 @@
 body {
-    background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8030579.jpg&f=1&nofb=1&ipt=444dd52a252766301f15a35cd9e3d6201bca771a033116219ef5bd6b156a0c56");
+    /* background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8030579.jpg&f=1&nofb=1&ipt=444dd52a252766301f15a35cd9e3d6201bca771a033116219ef5bd6b156a0c56"); */
+    background-image: url(./sunset.JPG);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -110,9 +111,52 @@ body {
     background-color: rgb(105, 105, 105);
 }
 
+
+/* ------------------Context Menu--------------------------- */
+
+.context-menu {
+    position: fixed;
+    display: none;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.721));
+    z-index: 1000;
+    border: 1px rgb(191, 191, 191) solid;
+    padding: 5px;
+}
+
+.context-menu.show {
+    display: block;
+}
+
+.context-menu-border.show {
+    display: block;
+}
+
+.context-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.context-menu ul li {
+    padding: .3rem .4rem;
+    cursor: pointer;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+.context-menu ul li:hover {
+    background: linear-gradient(hsl(211, 100%, 50%));
+    border-radius: 5px;
+}
+
+/* ----------------------Apps----------------------------------- */
+
 .app-store-app-window,
 .app-window {
-    display: none;
+    display: flex;
     flex-direction: row;
     position: absolute;
     top: 20%;
@@ -129,11 +173,11 @@ body {
     user-select: none;
 }
 
-.app-store-app-window .close-resize,
+
 .app-window .close-resize {
     display: flex;
     align-items: flex-end;
-    height: 28px;
+    height: 10%;
     width: 100%;
     border-radius: 10px;
 }
@@ -148,9 +192,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 11px;
-    width: 11px;
-    background-color: rgb(255, 83, 83);
+    height: 0.8rem;
+    width: 0.8rem;
     border-radius: 50%;
     margin-left: 17px;
 }
@@ -160,11 +203,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 11px;
-    width: 11px;
-    background-color: rgb(241, 201, 0);
+    height: 0.8rem;
+    width: 0.8rem;
     border-radius: 50%;
-    margin-left: 6px;
+    margin-left: 10px;
 }
 
 .app-store-app-window .close-resize .green,
@@ -172,35 +214,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 11px;
-    width: 11px;
-    background-color: rgb(0, 186, 0);
+    height: 0.8rem;
+    width: 0.8rem;
     border-radius: 50%;
-    margin-left: 6px;
+    margin-left: 10px;
 }
 
-/* --------------------------------------------- */
+.close-resize span {
+    margin: auto 0;
+    cursor: default;
+}
 
-.context-menu {
-    position: fixed;
-    display: none;
-    color: rgba(157, 157, 157, 0.8);
-    background-color: #f9f9f9;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    border-radius: 6%;
-    background: linear-gradient(rgba(0, 0, 0, 0.8));    
-    z-index: 1000;
-  }
-  
-  .context-menu.show {
-    display: block;
-  }
-  
-  .context-menu div {
-    padding: 8px 12px;
-    cursor: pointer;
-  }
-  
-  .context-menu div:hover {
-    background: linear-gradient(rgba(0, 0, 0, 0.09));    
-  }
+.red p {
+    line-height: 0.5;
+    font-size: smaller;
+    font-family: monospace;
+}
+
+.app-header {
+    margin: 0;
+    margin: auto 10px auto auto;
+}
