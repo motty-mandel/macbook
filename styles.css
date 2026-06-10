@@ -1,6 +1,6 @@
 body {
     /* background: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8030579.jpg&f=1&nofb=1&ipt=444dd52a252766301f15a35cd9e3d6201bca771a033116219ef5bd6b156a0c56"); */
-    background-image: url(./sunset.JPG);
+    background-image: url(./images/sunset.JPG);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -163,6 +163,7 @@ body {
     left: 20%;
     height: 500px;
     width: 400px;
+    min-width: 200px;
     border-radius: 10px;
     border: solid rgb(105, 105, 105) 1px;
     background: linear-gradient(rgba(0, 0, 0, 0.44));
@@ -234,4 +235,24 @@ body {
 .app-header {
     margin: 0;
     margin: auto 10px auto auto;
+}
+
+.resize-handle {
+    position: absolute;
+}
+
+.right {
+    top: 0;
+    right: -5px;
+    width: 5px;
+    height: 100%;
+    cursor: ew-resize;
+}
+
+.left {
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    cursor: ew-resize;
 }

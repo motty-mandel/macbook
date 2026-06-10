@@ -16,6 +16,13 @@ appStoreIcon.addEventListener('click', () => {
     createApp(appStoreIcon.id);
 })
 
+// -----------------------------------------------Creating the app
+
+resizeRight = document.createElement('div');
+resizeLeft = document.createElement('div');
+resizeRight.classList.add('resize-handle', 'right');
+resizeLeft.classList.add('resize-handle', 'left');
+
 function createApp(appName, appWindow) {
     let appOpened = localStorage.getItem(appName);
 
@@ -24,6 +31,10 @@ function createApp(appName, appWindow) {
         appWindow.classList.add('app-window');
         appWindow.setAttribute('data-app', appName);
         appWindow.style.display = 'flex';
+
+
+        appWindow.appendChild(resizeRight);
+        appWindow.appendChild(resizeLeft);
 
         finderCloseResize = document.createElement('div');
         finderCloseResize.classList.add('close-resize');
@@ -83,7 +94,42 @@ function createApp(appName, appWindow) {
     }
     appDragging(appWindow, finderCloseResize);
     openClose(red, appWindow, appName);
+    setupResizing(appWindow);
+};
+
+// --------------------------------------------------Resizing
+
+function setupResizing(appWindow) {
+    const rightHandle = appWindow.querySelector('.right');
+    
+    if (!rightHandle) return;
+
+    let resizing = false;
+    let startX;
+    let startWidth;
+
+    rightHandle.addEventListener("pointerdown", e => {
+        resizing = true;
+
+        startX = e.clientX;
+        startWidth = appWindow.offsetWidth;
+    });
+
+    document.addEventListener("pointermove", e => {
+        if (!resizing) return;
+
+        const dx = e.clientX - startX;
+
+        appWindow.style.width = startWidth + dx + "px";
+        appWindow.style.cursor = "ew-resize";
+    });
+
+    document.addEventListener("pointerup", () => {
+        resizing = false;
+    });
 }
+
+// --------------------------------------------------Dragging
 
 function appDragging(appWindow) {
 
@@ -127,6 +173,8 @@ function appDragging(appWindow) {
     });
 }
 
+// ----------------------------------------------Closing
+
 function openClose(closeButton, appWindow, appName) {
     closeButton.addEventListener('click', () => {
         document.body.removeChild(appWindow);
@@ -135,5 +183,5 @@ function openClose(closeButton, appWindow, appName) {
     });
 };
 
-// ------------------------------------Trafficlight button hover
+// -----------------------------------------------Shadow effect
 
