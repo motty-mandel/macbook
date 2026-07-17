@@ -96,18 +96,19 @@ body {
 }
 
 .app-dock img {
-    transition: ease-in-out 200ms;
+    transition: ease-in-out 100ms;
 }
 
 .app-dock img:hover {
-    transform: translate(0, -10px);
-    transition: ease-in-out 200ms;
+    transform: translate(0, -10px) scale(1.5);
+    transition: ease-in-out 100ms;
+    margin: 0 10px;
 }
 
 .separating-bar {
     margin: 5px 10px 0 10px;
     height: 45px;
-    width: 2px;
+    width: 1px;
     background-color: rgb(105, 105, 105);
 }
 
